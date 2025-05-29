@@ -55,7 +55,7 @@ export function Layout() {
   return (
     <TransitionContext.Provider value={{ isTransitioning, setIsTransitioning, transitionImage, setTransitionImage }}>
       <div className="min-h-screen flex flex-col bg-background text-foreground">
-        <nav className="bg-background border-b border-border shadow-md">
+        <nav className="bg-background border-b border-border shadow-md fixed top-0 left-0 right-0 z-50">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex h-16 justify-between items-center">
               <div className="flex items-center">
@@ -195,7 +195,10 @@ export function Layout() {
           )}
         </nav>
 
-        <main className="flex-grow">
+        {/* Spacer div to prevent content from going under the fixed navbar */}
+        <div className="h-16 w-full"></div>
+
+        <main className="flex-grow relative">
           <Outlet />
         </main>
 
